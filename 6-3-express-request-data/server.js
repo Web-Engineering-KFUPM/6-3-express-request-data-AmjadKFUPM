@@ -111,11 +111,28 @@ const app = express();
 // create server
 const PORT = 3000
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+   console.log(`Server running on http://localhost:${PORT}`);
 });
 
 // Query params: /echo?name=Ali&age=22
 
+app.get("/echo", (req, res) => {
+   const { name, age } = req.query;
+
+   if (!name || !age) {
+      return res.status(400).json({
+         ok: false,
+         error: "name & age required",
+      });
+   }
+
+   res.json({
+      ok: true,
+      name,
+      age,
+      msg: `Hello ${name}, you are ${age}`,
+   });
+});
 
 // Route params: /profile/First/Last
 
