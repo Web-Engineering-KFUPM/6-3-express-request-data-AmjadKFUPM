@@ -109,7 +109,10 @@ const app = express();
 
 
 // create server
-
+const PORT = 3000
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
 
 // Query params: /echo?name=Ali&age=22
 
